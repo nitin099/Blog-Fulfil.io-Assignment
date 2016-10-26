@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+
+{%  include "nav2.html"%}
+
+
+<div class="jumbotron" >
+<div class = 'row'>
+<div class = 'col-sm-6'>
+{% if request.user.is_authenticated %}
+  <h1>Hello {{request.user}} !!!</h1>
+  {% else %}
+  <h1> Heys, there !!!</h1>
+  {%endif%}
+
+  <p>A blog is a frequently updated online personal journal or diary. It is a place to express yourself to the world. A place to share your thoughts and your passions. Really, it’s anything you want it to be.</p>
+  <p><a class="btn btn-info btn-lg" href="/retrive/" role="button">View Blog</a></p>
+  <p>click here </p>
+</div>
+<div class="col-sm-6" >
+<!-- <style = 'background-color:black;height:300px; '> -->
+<iframe width="500" height="280" src="https://www.youtube.com/embed/5ZrLIhP2zy0" frameborder="0" allowfullscreen></iframe>
+
+</div>
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class= 'col-xs-3'>
+<p class='lead'>Made with Django & Bootstrap</p>
+
+<img src="{%static  'img/dj.png'%}" class ='img-responsive'/s >
+</div>
+
+<div class= 'col-xs-3'>
+<p class='lead'>Build For Everyone</p>
+
+<h2>
+<i class="fa fa-refresh fa-spin fa-5x fa-fw"></i></h2>
+<span class="sr-only">Loading...</span>
+
+</div>
+
+<div class= 'col-xs-3'>
+
+<p class='lead'>Source Code at Github</p>
+<h2><i class="fa fa-5x fa-github" aria-hidden="true"></i> </h2>
+</div>
+
+
+</br></br></br></br></br>
+
+{%endblock %}

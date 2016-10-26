@@ -1,0 +1,22 @@
+{% extends  "base.html" %}
+
+{% load crispy_forms_tags%}
+
+{% block content %}
+{% include 'nav2.html'%}
+
+
+<div class = "col-sm-6 col-sm-offset-3">
+<h2> {{title}} </h2></br>
+</div>
+<div class= 'col-sm-6 col-sm-offset-3'>
+
+{{form.media}}
+<form method="POST" action="" enctype='multipart/form-data'>{% csrf_token %}
+{{form|crispy}}
+</br>
+<input type="submit"  value="Create Post" class='btn btn-default'/>
+
+</form>
+</div>
+{% endblock content %}

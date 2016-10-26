@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+{% include 'nav2.html'%}
+<div class="col-sm-6 col-sm-offset-5 ">
+<h2> {{instance.title}} </h2>
+</div>
+<div class="row">
+<div class="col-sm-10 col-sm-offset-1 ">
+    <div class="thumbnail">
+      <div class="caption post-detail-item">
+        <h3>{{instance.title}}   <small>{{instance.publish}} </small> </h3>
+        <span style='color: blue;''>Author: {{instance.user}}</span>
+        {% if instance.image%} 
+        <img src= '{{instance.image.url}}' class = 'img-responsive'/>
+  		{% endif %}
+  		</br>
+  		<hr/>
+
+        <p>{{instance.get_markdown}} </p>
+       {% if request.user  == instance.user%} 
+       <hr/>
+       <a href="/delete/{{instance.id}}/" class="btn btn-danger" role="button">Delete</a>
+       <a href="{{instance.get_absolute_url}}" class="btn btn-warning" role="button">Update</a></p>
+        
+    {% endif %}
+      </div>
+    
+    </div>
+    <p class= 'lead'>Post Comments </p>
+    <hr/>
+
+    {% for c in comments%}
+    <blockquote>
+  <p>{{c.content}}</p>
+    <footer>via {{c.user}}  <cite title="Source Title"> | {{c.timestamp | timesince}} ago </cite></footer>
+  </blockquote>
+    {% endfor%}
+    <hr/>
+    <div class = 'col-sm-6 col-sm-offset-8'>
+    <form method="POST"  action=""> {% csrf_token%}
+    {{comment_form|crispy}}
+ </br>
+    
+    <input type="submit" value = "Comment" class='btn btn-default'>
+     </br>
+    </br>
+    </br>
+    </form>
+    </div>
+    </br>
+    </br>
+    </br>
+    
+
+
+  </div>
+
+
+
+</div>
+
+
+
+{% endblock %}
