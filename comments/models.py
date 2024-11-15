@@ -13,7 +13,7 @@ class CommentManager(models.Manager):
 		return qs
 
 class Comments(models.Model):
-	user 	= models.ForeignKey(settings.AUTH_USER_MODEL,default=1)
+	user 	= models.ForeignKey(settings.AUTH_USER_MODEL,default=1, on_delete=models.CASCADE)
 
 	content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)
 	object_id = models.PositiveIntegerField(null=True)

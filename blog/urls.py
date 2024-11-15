@@ -13,23 +13,23 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.urls import path
 from django.contrib import admin
 from fulfil_blog.views import  post,retrive,details,home ,update,delete_post
 from django.conf.urls.static import static
 from django.conf import settings
 from accounts.views import login_view , register_view , logout_view
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^post/$', post),
-    url(r'^$', home ,name = 'home'),
-    url(r'^retrive/$', retrive , name='retrive'),
-    url(r'^(?P<id>\d+)/details/$', details , name= 'detail'),  #remark
-    url(r'^(?P<id>\d+)/update/$', update),
-    url(r'^delete/(?P<id>\d+)/$', delete_post),
-    url(r'^login/$', login_view),
-    url(r'^register/$', register_view),
-    url(r'^logout/$', logout_view),
+    path(r'^admin/', admin.site.urls),
+    path(r'^post/$', post),
+    path('', home, name='home'),
+    path('retrive/', retrive, name='retrive'),
+    path('<int:id>/details/', details, name='detail'),
+    path('<int:id>/update/', update),
+    path(r'^delete/(?P<id>\d+)/$', delete_post),
+    path(r'^login/$', login_view),
+    path(r'^register/$', register_view),
+    path(r'^logout/$', logout_view),
 ]
 
 if settings.DEBUG:

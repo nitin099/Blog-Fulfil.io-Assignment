@@ -4,11 +4,13 @@ from markdown_deux import markdown
 from django.utils.safestring import mark_safe
 from django.contrib.contenttypes.models import ContentType
 from comments.models import Comments
-from django.core.urlresolvers import reverse
+# ... existing code ...
+from django.urls import reverse  # Updated import statement
+# ... existing code ...
 
 # Create your models here.
 class Post(models.Model):
-	user 		= models.ForeignKey(settings.AUTH_USER_MODEL,default = 1)
+	user 		= models.ForeignKey(settings.AUTH_USER_MODEL,default = 1, on_delete=models.CASCADE)
 	title 		= models.CharField(max_length=20)
 	image		= models.ImageField(null = True,
 					blank= True,
