@@ -4,6 +4,6 @@ django-crispy-forms==2.3
 django-markdown-deux==1.0.6
 django-pagedown==2.2.1
 markdown2==2.4.0
-Pillow==10.0.1
+Pillow==10.3.0
 pytz==2024.2
 sqlparse==0.5.2
